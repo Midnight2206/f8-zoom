@@ -1,0 +1,30 @@
+.code-editor {
+  margin-top: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+
+  // Monaco Editor căn padding khớp với Section
+  .monaco-editor .overflow-guard {
+    padding: 8px 12px !important;
+  }
+
+  .monaco-editor,
+  .monaco-editor-background,
+  .monaco-scrollable-element {
+    background-color: #1e1e1e !important;
+  }
+
+  .monaco-editor .view-lines {
+    font-family: "Fira Code", monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #dcdcdc;
+  }
+
+  .margin,
+  .line-numbers {
+    background-color: #252526 !important;
+    color: #858585 !important;
+  }
+}

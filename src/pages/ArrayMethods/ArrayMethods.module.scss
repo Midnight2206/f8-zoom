@@ -1,0 +1,13 @@
+.container {
+  margin-left: 24px;
+  margin-right: 24px;
+  margin-bottom: 24px;
+  .body {
+    display: grid;
+    margin-top: 16px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 4px;
+    row-gap: 8px;
+  }
+}
