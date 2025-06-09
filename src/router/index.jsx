@@ -6,7 +6,8 @@ function AppRouter() {
   return (
     <Router>
       <Routes>
-        <Route path="/arraymethods" element={<ArrayMethods />} />
+        <Route path="/" element={<ArrayMethods />} />
+        <Route path="arraymethods" element={<ArrayMethods />} />
       </Routes>
     </Router>
   )
