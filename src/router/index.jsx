@@ -1,13 +1,13 @@
-import React from 'react'
 import { HashRouter as Router, Routes, Route } from 'react-router-dom'
-import ArrayMethods from '../pages/ArrayMethods'
+import CloneMethods from '../pages/CloneMethods/CloneMethods.jsx'
 
 function AppRouter() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<ArrayMethods />} />
-        <Route path="arraymethods" element={<ArrayMethods />} />
+        <Route path="clonemethods" element={<CloneMethods />} />
+        <Route path="/" element={<CloneMethods />} />
+
       </Routes>
     </Router>
   )

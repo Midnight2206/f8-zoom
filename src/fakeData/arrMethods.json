@@ -72,24 +72,6 @@
     "examples": "console.log([5, 12, 8, 130, 44].findIndex2(el => el > 13)); // 3\nconsole.log([1, 2, 3].findIndex2(x => x === 2)); // 1"
   },
   {
-    "name": "findLast2",
-    "theory": [
-      "Phương thức `findLast()` trả về phần tử **cuối cùng** trong mảng thỏa mãn điều kiện do hàm callback cung cấp.",
-      "Cú pháp: array.findLast(callback(element, index, array), thisArg)"
-    ],
-    "code": "Array.prototype.findLast2 = function(callback, thisArg) {\n  for (let i = this.length - 1; i >= 0; i--) {\n    if (callback.call(thisArg, this[i], i, this)) {\n      return this[i];\n    }\n  }\n  return undefined;\n}",
-    "examples": "console.log([5, 12, 8, 130, 44].findLast2(el => el > 10)); // 130\nconsole.log(['a', 'b', 'c', 'b'].findLast2(ch => ch === 'b')); // 'b'"
-  },
-  {
-    "name": "findLastIndex2",
-    "theory": [
-      "Phương thức `findLastIndex()` trả về chỉ số của phần tử **cuối cùng** trong mảng thỏa mãn điều kiện do hàm callback cung cấp, nếu không có thì trả về -1.",
-      "Cú pháp: array.findLastIndex(callback(element, index, array), thisArg)"
-    ],
-    "code": "Array.prototype.findLastIndex2 = function(callback, thisArg) {\n  for (let i = this.length - 1; i >= 0; i--) {\n    if (callback.call(thisArg, this[i], i, this)) {\n      return i;\n    }\n  }\n  return -1;\n}",
-    "examples": "console.log([5, 12, 8, 130, 44].findLastIndex2(el => el > 10)); // 3\nconsole.log([1, 2, 3, 2].findLastIndex2(x => x === 2)); // 3"
-  },
-  {
     "name": "flat2",
     "theory": [
       "Phương thức `flat()` làm phẳng mảng lồng nhau đến độ sâu được chỉ định.",

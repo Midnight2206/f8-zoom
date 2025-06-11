@@ -1,0 +1,58 @@
+[
+  
+  {
+    "name": "toFixed2",
+    "theory": [
+      "`toFixed()` chuyển số thành chuỗi với số chữ số sau dấu thập phân cố định.",
+      "Cú pháp: `number.toFixed(digits)`\n- `digits`: số chữ số sau dấu thập phân."
+    ],
+    "code": "Number.prototype.toFixed2 = function(digits) {\n  return this.toFixed(digits);\n};",
+    "examples": "console.log((5.6789).toFixed2(2)); // '5.68'\nconsole.log((5).toFixed2(3)); // '5.000'"
+  },
+  {
+    "name": "toString2",
+    "theory": [
+      "`toString()` chuyển số thành chuỗi. Có thể chỉ định cơ số (radix).",
+      "Cú pháp: `number.toString(radix)`\n- `radix` (tuỳ chọn): Cơ số từ 2 đến 36 (mặc định là 10)."
+    ],
+    "code": "Number.prototype.toString2 = function(radix) {\n  return this.toString(radix);\n};",
+    "examples": "console.log((255).toString2()); // '255'\nconsole.log((255).toString2(16)); // 'ff'\nconsole.log((10).toString2(2)); // '1010'"
+  },
+  {
+    "name": "valueOf2",
+    "theory": [
+      "`valueOf()` trả về giá trị nguyên thủy của một đối tượng Number.",
+      "Cú pháp: `number.valueOf()`"
+    ],
+    "code": "Number.prototype.valueOf2 = function() {\n  return this.valueOf();\n};",
+    "examples": "const num = new Number(42);\nconsole.log(num.valueOf2()); // 42\nconsole.log(typeof num.valueOf2()); // 'number'"
+  },
+  
+  {
+    "name": "toExponential2",
+    "theory": [
+      "`toExponential()` chuyển số thành chuỗi ở dạng số mũ (exponential notation).",
+      "Cú pháp: `number.toExponential(fractionDigits)`\n- `fractionDigits`: số chữ số sau dấu thập phân (tuỳ chọn)."
+    ],
+    "code": "Number.prototype.toExponential2 = function(fractionDigits) {\n  return this.toExponential(fractionDigits);\n};",
+    "examples": "console.log((123456).toExponential2()); // '1.23456e+5'\nconsole.log((123456).toExponential2(2)); // '1.23e+5'"
+  },
+  {
+    "name": "toPrecision2",
+    "theory": [
+      "`toPrecision()` định dạng số với độ chính xác tổng số chữ số.",
+      "Cú pháp: `number.toPrecision(precision)`\n- `precision`: tổng số chữ số (tuỳ chọn)."
+    ],
+    "code": "Number.prototype.toPrecision2 = function(precision) {\n  return this.toPrecision(precision);\n};",
+    "examples": "console.log((123.456).toPrecision2(4)); // '123.5'\nconsole.log((123.456).toPrecision2(2)); // '1.2e+2'"
+  },
+  {
+    "name": "toLocaleString2",
+    "theory": [
+      "`toLocaleString()` định dạng số theo định dạng vùng (locale).",
+      "Cú pháp: `number.toLocaleString(locales, options)`"
+    ],
+    "code": "Number.prototype.toLocaleString2 = function(locales, options) {\n  return this.toLocaleString(locales, options);\n};",
+    "examples": "console.log((1234567.89).toLocaleString2('en-US')); // '1,234,567.89'\nconsole.log((1234567.89).toLocaleString2('de-DE')); // '1.234.567,89'"
+  }
+]

@@ -1,0 +1,291 @@
+[
+  {
+    "name": "charAt2",
+    "theory": [
+      "Phương thức `charAt()` trả về ký tự tại một vị trí được chỉ định trong chuỗi.",
+      "Cú pháp: str.charAt(index)\n- index: chỉ số của ký tự cần lấy."
+    ],
+    "code": "String.prototype.charAt2 = function(index) {\n  index = Math.floor(index);\n  if (index < 0 || index >= this.length) return '';\n  return this[index];\n}",
+    "examples": "console.log('hello'.charAt2(1)); // 'e'\nconsole.log('hello'.charAt2(5)); // ''"
+  },
+  {
+    "name": "charCodeAt2",
+    "theory": [
+      "Phương thức `charCodeAt()` trả về mã Unicode của ký tự tại vị trí được chỉ định.",
+      "Cú pháp: str.charCodeAt(index)\n- index: chỉ số của ký tự cần lấy mã."
+    ],
+    "code": "String.prototype.charCodeAt2 = function(index) {\n  index = Math.floor(index);\n  if (index < 0 || index >= this.length) return NaN;\n  return this[index].charCodeAt(0);\n}",
+    "examples": "console.log('ABC'.charCodeAt2(1)); // 66\nconsole.log('ABC'.charCodeAt2(3)); // NaN"
+  },
+  {
+    "name": "codePointAt2",
+    "theory": [
+      "Phương thức `codePointAt()` trả về mã code point của ký tự tại vị trí chỉ định, hỗ trợ ký tự UTF-16 mở rộng.",
+      "Cú pháp: str.codePointAt(pos)\n- pos: vị trí của ký tự cần lấy mã code point."
+    ],
+    "code": "String.prototype.codePointAt2 = function(pos) {\n  var code = this.charCodeAt(pos);\n  if (code >= 0xd800 && code <= 0xdbff && this.length > pos + 1) {\n    var next = this.charCodeAt(pos + 1);\n    if (next >= 0xdc00 && next <= 0xdfff) {\n      return ((code - 0xd800) * 0x400) + (next - 0xdc00) + 0x10000;\n    }\n  }\n  return code;\n}",
+    "examples": "console.log('𐐷'.codePointAt2(0)); // 66615\nconsole.log('ABC'.codePointAt2(0)); // 65"
+  },
+  {
+    "name": "concat2",
+    "theory": [
+      "Phương thức `concat()` nối một hoặc nhiều chuỗi với chuỗi hiện tại và trả về chuỗi mới.",
+      "Cú pháp: str.concat(str2, str3, ..., strN)"
+    ],
+    "code": "String.prototype.concat2 = function(...args) {\n  return this + args.join('');\n}",
+    "examples": "console.log('Hello'.concat2(' ', 'World')); // 'Hello World'\nconsole.log('A'.concat2('B', 'C')); // 'ABC'"
+  },
+  {
+    "name": "includes2",
+    "theory": [
+      "Phương thức `includes()` kiểm tra xem chuỗi có chứa chuỗi con được chỉ định hay không.",
+      "Cú pháp: str.includes(searchString, position)\n- searchString: chuỗi con cần tìm\n- position (tùy chọn): vị trí bắt đầu tìm kiếm"
+    ],
+    "code": "String.prototype.includes2 = function(searchString, position = 0) {\n  return this.indexOf(searchString, position) !== -1;\n}",
+    "examples": "console.log('hello world'.includes2('world')); // true\nconsole.log('hello world'.includes2('World')); // false"
+  },
+  {
+    "name": "endsWith2",
+    "theory": [
+      "`endsWith()` kiểm tra xem chuỗi có kết thúc bằng chuỗi con chỉ định hay không.",
+      "Cú pháp: str.endsWith(searchString[, length])\n- searchString: chuỗi cần kiểm tra.\n- length (tùy chọn): độ dài chuỗi cần xem xét."
+    ],
+    "code": "String.prototype.endsWith2 = function(searchString, length) {\n  const str = this.toString();\n  const len = length !== undefined ? Math.min(length, str.length) : str.length;\n  return str.substring(len - searchString.length, len) === searchString;\n};",
+    "examples": "console.log('JavaScript'.endsWith2('Script')); // true\nconsole.log('JavaScript'.endsWith2('Java')); // false\nconsole.log('JavaScript'.endsWith2('Java', 4)); // true"
+  },
+  {
+    "name": "includes2",
+    "theory": [
+      "`includes()` kiểm tra xem chuỗi có chứa chuỗi con chỉ định hay không.",
+      "Cú pháp: str.includes(searchString[, position])\n- searchString: chuỗi cần tìm.\n- position (tùy chọn): vị trí bắt đầu tìm kiếm."
+    ],
+    "code": "String.prototype.includes2 = function(searchString, position) {\n  const str = this.toString();\n  return str.indexOf(searchString, position || 0) !== -1;\n};",
+    "examples": "console.log('Hello World'.includes2('World')); // true\nconsole.log('Hello World'.includes2('world')); // false\nconsole.log('Hello World'.includes2('o', 5)); // true"
+  },
+  {
+    "name": "indexOf2",
+    "theory": [
+      "`indexOf()` trả về vị trí đầu tiên tìm thấy của chuỗi con trong chuỗi cha, hoặc -1 nếu không tìm thấy.",
+      "Cú pháp: str.indexOf(searchValue[, fromIndex])\n- searchValue: chuỗi cần tìm.\n- fromIndex (tùy chọn): vị trí bắt đầu tìm kiếm."
+    ],
+    "code": "String.prototype.indexOf2 = function(searchValue, fromIndex) {\n  const str = this.toString();\n  return str.indexOf(searchValue, fromIndex || 0);\n};",
+    "examples": "console.log('hello world'.indexOf2('o')); // 4\nconsole.log('hello world'.indexOf2('o', 5)); // 7\nconsole.log('hello world'.indexOf2('z')); // -1"
+  },
+  {
+    "name": "lastIndexOf2",
+    "theory": [
+      "`lastIndexOf()` trả về vị trí cuối cùng tìm thấy của chuỗi con trong chuỗi cha, hoặc -1 nếu không tìm thấy.",
+      "Cú pháp: str.lastIndexOf(searchValue[, fromIndex])\n- searchValue: chuỗi cần tìm.\n- fromIndex (tùy chọn): vị trí bắt đầu tìm từ phải sang trái."
+    ],
+    "code": "String.prototype.lastIndexOf2 = function(searchValue, fromIndex) {\n  const str = this.toString();\n  if (fromIndex === undefined || fromIndex > str.length - 1) {\n    fromIndex = str.length - 1;\n  }\n  return str.lastIndexOf(searchValue, fromIndex);\n};",
+    "examples": "console.log('can can can'.lastIndexOf2('can')); // 8\nconsole.log('can can can'.lastIndexOf2('can', 4)); // 4\nconsole.log('can can can'.lastIndexOf2('dog')); // -1"
+  },
+  {
+    "name": "localeCompare2",
+    "theory": [
+      "`localeCompare()` so sánh hai chuỗi theo thứ tự sắp xếp cụ thể của ngôn ngữ.",
+      "Cú pháp: str.localeCompare(compareString[, locales[, options]])"
+    ],
+    "code": "String.prototype.localeCompare2 = function(compareString, locales, options) {\n  return this.toString().localeCompare(compareString, locales, options);\n};",
+    "examples": "console.log('a'.localeCompare2('b')); // -1\nconsole.log('b'.localeCompare2('a')); // 1\nconsole.log('a'.localeCompare2('a')); // 0"
+  },
+  {
+    "name": "match2",
+    "theory": [
+      "Phương thức `match()` tìm khớp chuỗi với một biểu thức chính quy.",
+      "Cú pháp: str.match(regexp)"
+    ],
+    "code": "String.prototype.match2 = function(regexp) {\n  return this.toString().match(regexp);\n}",
+    "examples": "console.log('abc123'.match2(/\\d+/)); // ['123']\nconsole.log('abc'.match2(/x/)); // null"
+  },
+  {
+    "name": "matchAll2",
+    "theory": [
+      "Phương thức `matchAll()` trả về một iterator cho tất cả các kết quả khớp với một biểu thức chính quy có cờ 'g'.",
+      "Cú pháp: str.matchAll(regexp)"
+    ],
+    "code": "String.prototype.matchAll2 = function(regexp) {\n  return Array.from(this.toString().matchAll(regexp));\n}",
+    "examples": "console.log([... 'test1test2'.matchAll2(/test\\d/g)]); // [['test1'], ['test2']]"
+  },
+  {
+    "name": "normalize2",
+    "theory": [
+      "Phương thức `normalize()` chuẩn hóa chuỗi Unicode thành một dạng nhất định.",
+      "Cú pháp: str.normalize([form])"
+    ],
+    "code": "String.prototype.normalize2 = function(form) {\n  return this.toString().normalize(form);\n}",
+    "examples": "console.log('\\u1E9B\\u0323'.normalize2('NFC')); // 'ṩ'\nconsole.log('\\u1E9B\\u0323'.normalize2('NFD')); // 'ẛ̣'"
+  },
+  {
+    "name": "padEnd2",
+    "theory": [
+      "Phương thức `padEnd()` thêm ký tự vào cuối chuỗi cho đến khi đạt được độ dài mong muốn.",
+      "Cú pháp: str.padEnd(targetLength[, padString])"
+    ],
+    "code": "String.prototype.padEnd2 = function(targetLength, padString) {\n  return this.toString().padEnd(targetLength, padString);\n}",
+    "examples": "console.log('abc'.padEnd2(10, '-')); // 'abc-------'\nconsole.log('12345'.padEnd2(8, '0')); // '12345000'"
+  },
+  {
+    "name": "padStart2",
+    "theory": [
+      "Phương thức `padStart()` thêm ký tự vào đầu chuỗi cho đến khi đạt được độ dài mong muốn.",
+      "Cú pháp: str.padStart(targetLength[, padString])"
+    ],
+    "code": "String.prototype.padStart2 = function(targetLength, padString) {\n  return this.toString().padStart(targetLength, padString);\n}",
+    "examples": "console.log('abc'.padStart2(10, '-')); // '-------abc'\nconsole.log('5'.padStart2(3, '0')); // '005'"
+  },
+  {
+    "name": "repeat2",
+    "theory": [
+      "Phương thức `repeat()` tạo một chuỗi mới bằng cách lặp lại chuỗi gốc một số lần xác định.",
+      "Cú pháp: str.repeat(count)"
+    ],
+    "code": "String.prototype.repeat2 = function(count) {\n  return this.toString().repeat(count);\n}",
+    "examples": "console.log('abc'.repeat2(3)); // 'abcabcabc'\nconsole.log('x'.repeat2(0)); // ''"
+  },
+  {
+    "name": "replace2",
+    "theory": [
+      "Phương thức `replace()` trả về một chuỗi mới với một số hoặc tất cả các kết quả khớp được thay thế bằng một giá trị mới.",
+      "Cú pháp: str.replace(pattern, replacement)"
+    ],
+    "code": "String.prototype.replace2 = function(pattern, replacement) {\n  return this.toString().replace(pattern, replacement);\n}",
+    "examples": "console.log('hello world'.replace2('world', 'there')); // 'hello there'\nconsole.log('abcabc'.replace2(/a/, 'x')); // 'xbcabc'"
+  },
+  {
+    "name": "replaceAll2",
+    "theory": [
+      "Phương thức `replaceAll()` thay thế tất cả các lần xuất hiện của một chuỗi hoặc biểu thức chính quy.",
+      "Cú pháp: str.replaceAll(pattern, replacement)"
+    ],
+    "code": "String.prototype.replaceAll2 = function(pattern, replacement) {\n  return this.toString().replaceAll(pattern, replacement);\n}",
+    "examples": "console.log('abcabc'.replaceAll2('a', 'x')); // 'xbcxbc'\nconsole.log('123-123'.replaceAll2('-', ':')); // '123:123'"
+  },
+  {
+    "name": "search2",
+    "theory": [
+      "Phương thức `search()` thực hiện tìm kiếm khớp biểu thức chính quy và trả về chỉ số đầu tiên tìm thấy.",
+      "Cú pháp: str.search(regexp)"
+    ],
+    "code": "String.prototype.search2 = function(regexp) {\n  return this.toString().search(regexp);\n}",
+    "examples": "console.log('hello world'.search2(/world/)); // 6\nconsole.log('abc'.search2(/x/)); // -1"
+  },
+  {
+    "name": "slice2",
+    "theory": [
+      "Phương thức `slice()` trích xuất một phần của chuỗi và trả về chuỗi mới mà không làm thay đổi chuỗi gốc.",
+      "Cú pháp: str.slice(beginIndex[, endIndex])"
+    ],
+    "code": "String.prototype.slice2 = function(beginIndex, endIndex) {\n  return this.toString().slice(beginIndex, endIndex);\n}",
+    "examples": "console.log('abcdef'.slice2(1, 4)); // 'bcd'\nconsole.log('abcdef'.slice2(-3)); // 'def'"
+  },
+  {
+    "name": "split2",
+    "theory": [
+      "Phương thức `split()` chia chuỗi thành một mảng các chuỗi con dựa trên một ký tự hoặc biểu thức chính quy.",
+      "Cú pháp: str.split(separator[, limit])"
+    ],
+    "code": "String.prototype.split2 = function(separator, limit) {\n  return this.toString().split(separator, limit);\n}",
+    "examples": "console.log('a,b,c'.split2(',')); // ['a', 'b', 'c']\nconsole.log('abc'.split2('', 2)); // ['a', 'b']"
+  },
+  {
+    "name": "startsWith2",
+    "theory": [
+      "Phương thức `startsWith()` kiểm tra xem chuỗi có bắt đầu bằng ký tự/chuỗi con được chỉ định hay không.",
+      "Cú pháp: str.startsWith(searchString[, position])"
+    ],
+    "code": "String.prototype.startsWith2 = function(searchString, position) {\n  return this.toString().startsWith(searchString, position);\n}",
+    "examples": "console.log('hello world'.startsWith2('hello')); // true\nconsole.log('hello'.startsWith2('e', 1)); // true"
+  },
+  {
+    "name": "substring2",
+    "theory": [
+      "Phương thức `substring()` trả về một chuỗi con từ chuỗi gốc giữa hai chỉ số được chỉ định.",
+      "Cú pháp: str.substring(indexStart[, indexEnd])"
+    ],
+    "code": "String.prototype.substring2 = function(indexStart, indexEnd) {\n  return this.toString().substring(indexStart, indexEnd);\n}",
+    "examples": "console.log('hello'.substring2(1, 4)); // 'ell'\nconsole.log('hello'.substring2(4, 1)); // 'ell'"
+  },
+  {
+    "name": "toLocaleLowerCase2",
+    "theory": [
+      "Phương thức `toLocaleLowerCase()` chuyển đổi chuỗi thành chữ thường, sử dụng các quy tắc bản địa hóa.",
+      "Cú pháp: str.toLocaleLowerCase([locale])"
+    ],
+    "code": "String.prototype.toLocaleLowerCase2 = function(locale) {\n  return this.toString().toLocaleLowerCase(locale);\n}",
+    "examples": "console.log('İstanbul'.toLocaleLowerCase2('tr-TR')); // 'istanbul' trong tiếng Thổ Nhĩ Kỳ"
+  },
+  {
+    "name": "toLocaleUpperCase2",
+    "theory": [
+      "Phương thức `toLocaleUpperCase()` chuyển đổi chuỗi thành chữ in hoa, sử dụng các quy tắc bản địa hóa.",
+      "Cú pháp: str.toLocaleUpperCase([locale])"
+    ],
+    "code": "String.prototype.toLocaleUpperCase2 = function(locale) {\n  return this.toString().toLocaleUpperCase(locale);\n}",
+    "examples": "console.log('istanbul'.toLocaleUpperCase2('tr-TR')); // 'İSTANBUL'"
+  },
+  {
+    "name": "toLowerCase2",
+    "theory": [
+      "Phương thức `toLowerCase()` chuyển đổi tất cả các ký tự trong chuỗi thành chữ thường.",
+      "Cú pháp: str.toLowerCase()"
+    ],
+    "code": "String.prototype.toLowerCase2 = function() {\n  return this.toString().toLowerCase();\n}",
+    "examples": "console.log('Hello World'.toLowerCase2()); // 'hello world'\nconsole.log('JavaScript'.toLowerCase2()); // 'javascript'"
+  },
+  {
+    "name": "toString2",
+    "theory": [
+      "`toString()` trả về chuỗi đại diện của đối tượng String.",
+      "Cú pháp: str.toString()"
+    ],
+    "code": "String.prototype.toString2 = function() {\n  return this.toString();\n}",
+    "examples": "console.log((123).toString2()); // '123'\nconsole.log([1, 2, 3].toString2()); // '1,2,3'"
+  },
+  {
+    "name": "toUpperCase2",
+    "theory": [
+      "`toUpperCase()` chuyển đổi tất cả các ký tự trong chuỗi thành chữ in hoa.",
+      "Cú pháp: str.toUpperCase()"
+    ],
+    "code": "String.prototype.toUpperCase2 = function() {\n  return this.toString().toUpperCase();\n}",
+    "examples": "console.log('hello world'.toUpperCase2()); // 'HELLO WORLD'\nconsole.log('javascript'.toUpperCase2()); // 'JAVASCRIPT'"
+  },
+  {
+    "name": "trim2",
+    "theory": [
+      "`trim()` loại bỏ khoảng trắng ở đầu và cuối chuỗi.",
+      "Cú pháp: str.trim()"
+    ],
+    "code": "String.prototype.trim2 = function() {\n  return this.toString().trim();\n}",
+    "examples": "console.log('   hello   '.trim2()); // 'hello'\nconsole.log('   '.trim2()); // ''"
+  },
+  {
+    "name": "trimEnd2",
+    "theory": [
+      "`trimEnd()` loại bỏ khoảng trắng ở cuối chuỗi.",
+      "Cú pháp: str.trimEnd()"
+    ],
+    "code": "String.prototype.trimEnd2 = function() {\n  return this.toString().trimEnd();\n}",
+    "examples": "console.log('hello   '.trimEnd2()); // 'hello'\nconsole.log('   '.trimEnd2()); // ''"
+  },
+  {
+    "name": "trimStart2",
+    "theory": [
+      "`trimStart()` loại bỏ khoảng trắng ở đầu chuỗi.",
+      "Cú pháp: str.trimStart()"
+    ],
+    "code": "String.prototype.trimStart2 = function() {\n  return this.toString().trimStart();\n}",
+    "examples": "console.log('   hello'.trimStart2()); // 'hello'\nconsole.log('   '.trimStart2()); // ''"
+  },
+  {
+    "name": "valueOf2",
+    "theory": [
+      "`valueOf()` trả về giá trị nguyên thủy của đối tượng String.",
+      "Cú pháp: str.valueOf()"
+    ],
+    "code": "String.prototype.valueOf2 = function() {\n  return this.toString();\n}",
+    "examples": "console.log((new String('hello')).valueOf2()); // 'hello'\nconsole.log((new String('123')).valueOf2()); // '123'"
+  }
+
+]

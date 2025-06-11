@@ -1,0 +1,182 @@
+[
+  {
+    "name": "abs2",
+    "theory": [
+      "Phương thức `Math.abs()` trả về giá trị tuyệt đối của một số.",
+      "Cú pháp: Math.abs(x)\n- x: số cần lấy giá trị tuyệt đối."
+    ],
+    "code": "Math.abs2 = function(x) {\n  return x < 0 ? -x : x;\n};",
+    "examples": "console.log(Math.abs2(-5)); // 5\nconsole.log(Math.abs2(3)); // 3"
+  },
+  {
+    "name": "ceil2",
+    "theory": [
+      "Phương thức `Math.ceil()` làm tròn một số lên số nguyên gần nhất.",
+      "Cú pháp: Math.ceil(x)\n- x: số cần làm tròn lên."
+    ],
+    "code": "Math.ceil2 = function(x) {\n  return (x % 1 === 0) ? x : (x < 0 ? ~~x : ~~x + 1);\n};",
+    "examples": "console.log(Math.ceil2(4.2)); // 5\nconsole.log(Math.ceil2(-4.2)); // -4"
+  },
+  {
+    "name": "floor2",
+    "theory": [
+      "Phương thức `Math.floor()` làm tròn một số xuống số nguyên gần nhất.",
+      "Cú pháp: Math.floor(x)\n- x: số cần làm tròn xuống."
+    ],
+    "code": "Math.floor2 = function(x) {\n  return x >= 0 ? ~~x : (~~x - (x % 1 === 0 ? 0 : 1));\n};",
+    "examples": "console.log(Math.floor2(4.8)); // 4\nconsole.log(Math.floor2(-4.2)); // -5"
+  },
+  {
+    "name": "max2",
+    "theory": [
+      "Phương thức `Math.max()` trả về số lớn nhất trong các đối số.",
+      "Cú pháp: Math.max(a, b, ...)\n- Các đối số là các số cần so sánh."
+    ],
+    "code": "Math.max2 = function(...args) {\n  return args.reduce((max, val) => val > max ? val : max, -Infinity);\n};",
+    "examples": "console.log(Math.max2(1, 5, 3)); // 5\nconsole.log(Math.max2(-10, -2)); // -2"
+  },
+  {
+    "name": "min2",
+    "theory": [
+      "Phương thức `Math.min()` trả về số nhỏ nhất trong các đối số.",
+      "Cú pháp: Math.min(a, b, ...)\n- Các đối số là các số cần so sánh."
+    ],
+    "code": "Math.min2 = function(...args) {\n  return args.reduce((min, val) => val < min ? val : min, Infinity);\n};",
+    "examples": "console.log(Math.min2(1, 5, 3)); // 1\nconsole.log(Math.min2(-10, -2)); // -10"
+  },
+  {
+    "name": "pow2",
+    "theory": [
+      "Phương thức `Math.pow()` trả về cơ số được nâng lên lũy thừa số mũ.",
+      "Cú pháp: Math.pow(base, exponent)\n- base: cơ số\n- exponent: số mũ"
+    ],
+    "code": "Math.pow2 = function(base, exponent) {\n  let result = 1;\n  const negative = exponent < 0;\n  exponent = Math.abs(exponent);\n  for (let i = 0; i < exponent; i++) {\n    result *= base;\n  }\n  return negative ? 1 / result : result;\n};",
+    "examples": "console.log(Math.pow2(2, 3)); // 8\nconsole.log(Math.pow2(5, -2)); // 0.04"
+  },
+  {
+    "name": "random2",
+    "theory": [
+      "Phương thức `Math.random()` trả về một số dấu chấm động giả ngẫu nhiên trong khoảng [0, 1).",
+      "Cú pháp: Math.random()"
+    ],
+    "code": "// Math.random2 không thể clone thực sự vì cần độ ngẫu nhiên\nMath.random2 = function() {\n  return (Date.now() % 1000) / 1000;\n};",
+    "examples": "console.log(Math.random2()); // ví dụ: 0.728"
+  },
+  {
+    "name": "round2",
+    "theory": [
+      "Phương thức `Math.round()` làm tròn một số đến số nguyên gần nhất.",
+      "Cú pháp: Math.round(x)\n- x: số cần làm tròn."
+    ],
+    "code": "Math.round2 = function(x) {\n  const decimal = x % 1;\n  if (x >= 0) {\n    return decimal >= 0.5 ? ~~x + 1 : ~~x;\n  } else {\n    return decimal <= -0.5 ? ~~x - 1 : ~~x;\n  }\n};",
+    "examples": "console.log(Math.round2(4.5)); // 5\nconsole.log(Math.round2(-1.4)); // -1\nconsole.log(Math.round2(-1.6)); // -2"
+  },
+  {
+    "name": "sqrt2",
+    "theory": [
+      "Phương thức `Math.sqrt()` trả về căn bậc hai dương của một số.",
+      "Cú pháp: Math.sqrt(x)\n- x: số cần tìm căn bậc hai."
+    ],
+    "code": "Math.sqrt2 = function(x) {\n  if (x < 0) return NaN;\n  let guess = x / 2;\n  for (let i = 0; i < 20; i++) {\n    guess = (guess + x / guess) / 2;\n  }\n  return guess;\n};",
+    "examples": "console.log(Math.sqrt2(4)); // 2\nconsole.log(Math.sqrt2(9)); // 3"
+  },
+  {
+    "name": "trunc2",
+    "theory": [
+      "Phương thức `Math.trunc()` trả về phần nguyên của một số bằng cách loại bỏ phần thập phân.",
+      "Cú pháp: Math.trunc(x)\n- x: số cần lấy phần nguyên."
+    ],
+    "code": "Math.trunc2 = function(x) {\n  return x < 0 ? Math.ceil(x) : Math.floor(x);\n};",
+    "examples": "console.log(Math.trunc2(13.37)); // 13\nconsole.log(Math.trunc2(-0.123)); // 0"
+  },
+  {
+    "name": "sin2",
+    "theory": [
+      "Phương thức `Math.sin()` trả về giá trị sin của một góc (tính bằng radian).",
+      "Cú pháp: Math.sin(x)\n- x: góc (đơn vị radian)"
+    ],
+    "code": "Math.sin2 = function(x) {\n  // Sử dụng khai triển Taylor với 10 số hạng\n  let term = x;\n  let sum = 0;\n  let n = 1;\n  for (let i = 0; i < 10; i++) {\n    sum += term;\n    term *= -1 * x * x / ((2 * n) * (2 * n + 1));\n    n++;\n  }\n  return sum;\n};",
+    "examples": "console.log(Math.sin2(Math.PI / 2)); // ≈ 1\nconsole.log(Math.sin2(0)); // 0"
+  },
+  {
+    "name": "cos2",
+    "theory": [
+      "Phương thức `Math.cos()` trả về giá trị cos của một góc (tính bằng radian).",
+      "Cú pháp: Math.cos(x)\n- x: góc (đơn vị radian)"
+    ],
+    "code": "Math.cos2 = function(x) {\n  // Sử dụng khai triển Taylor với 10 số hạng\n  let term = 1;\n  let sum = 0;\n  let n = 1;\n  for (let i = 0; i < 10; i++) {\n    sum += term;\n    term *= -1 * x * x / ((2 * n - 1) * (2 * n));\n    n++;\n  }\n  return sum;\n};",
+    "examples": "console.log(Math.cos2(Math.PI)); // ≈ -1\nconsole.log(Math.cos2(0)); // 1"
+  },
+  {
+    "name": "tan2",
+    "theory": [
+      "Phương thức `Math.tan()` trả về giá trị tan của một góc (tính bằng radian).",
+      "Cú pháp: Math.tan(x)\n- x: góc (đơn vị radian)"
+    ],
+    "code": "Math.tan2 = function(x) {\n  return Math.sin2(x) / Math.cos2(x);\n};",
+    "examples": "console.log(Math.tan2(Math.PI / 4)); // ≈ 1\nconsole.log(Math.tan2(0)); // 0"
+  },
+  {
+    "name": "sign2",
+    "theory": [
+      "Phương thức `Math.sign()` trả về dấu của một số, cho biết số đó là âm, dương hay không.",
+      "Cú pháp: Math.sign(x)"
+    ],
+    "code": "Math.sign2 = function(x) {\n  if (x > 0) return 1;\n  if (x < 0) return -1;\n  if (x === 0) return 0;\n  return NaN;\n};",
+    "examples": "console.log(Math.sign2(-5)); // -1\nconsole.log(Math.sign2(0)); // 0\nconsole.log(Math.sign2(10)); // 1"
+  },
+  {
+    "name": "max2",
+    "theory": [
+      "Phương thức `Math.max()` trả về số lớn nhất trong các đối số truyền vào.",
+      "Cú pháp: Math.max(x1, x2, ..., xn)"
+    ],
+    "code": "Math.max2 = function(...args) {\n  if (args.length === 0) return -Infinity;\n  let max = args[0];\n  for (let i = 1; i < args.length; i++) {\n    if (args[i] > max) max = args[i];\n  }\n  return max;\n};",
+    "examples": "console.log(Math.max2(3, 1, 7, 0)); // 7"
+  },
+  {
+    "name": "min2",
+    "theory": [
+      "Phương thức `Math.min()` trả về số nhỏ nhất trong các đối số truyền vào.",
+      "Cú pháp: Math.min(x1, x2, ..., xn)"
+    ],
+    "code": "Math.min2 = function(...args) {\n  if (args.length === 0) return Infinity;\n  let min = args[0];\n  for (let i = 1; i < args.length; i++) {\n    if (args[i] < min) min = args[i];\n  }\n  return min;\n};",
+    "examples": "console.log(Math.min2(3, 1, 7, 0)); // 0"
+  },
+  {
+    "name": "exp2",
+    "theory": [
+      "Phương thức `Math.exp()` trả về giá trị của e^x, trong đó e là hằng số Euler (≈ 2.718).",
+      "Cú pháp: Math.exp(x)"
+    ],
+    "code": "Math.exp2 = function(x) {\n  let sum = 1;\n  let term = 1;\n  for (let i = 1; i < 20; i++) {\n    term *= x / i;\n    sum += term;\n  }\n  return sum;\n};",
+    "examples": "console.log(Math.exp2(1)); // ≈ 2.718\nconsole.log(Math.exp2(0)); // 1"
+  },
+  {
+    "name": "log2",
+    "theory": [
+      "Phương thức `Math.log()` trả về logarit tự nhiên (cơ số e) của một số.",
+      "Cú pháp: Math.log(x)"
+    ],
+    "code": "Math.log2 = function(x) {\n  if (x <= 0) return NaN;\n  let n = 1000;\n  let result = 0;\n  x = (x - 1) / (x + 1);\n  for (let i = 1; i < n; i += 2) {\n    result += (1 / i) * Math.pow(x, i);\n  }\n  return 2 * result;\n};",
+    "examples": "console.log(Math.log2(Math.E)); // ≈ 1\nconsole.log(Math.log2(1)); // 0"
+  },
+  {
+    "name": "log10_2",
+    "theory": [
+      "Phương thức `Math.log10()` trả về logarit cơ số 10 của một số.",
+      "Cú pháp: Math.log10(x)"
+    ],
+    "code": "Math.log10_2 = function(x) {\n  return Math.log(x) / Math.log(10);\n};",
+    "examples": "console.log(Math.log10_2(100)); // ≈ 2\nconsole.log(Math.log10_2(10)); // ≈ 1"
+  },
+  {
+    "name": "log2_2",
+    "theory": [
+      "Phương thức `Math.log2()` trả về logarit cơ số 2 của một số.",
+      "Cú pháp: Math.log2(x)"
+    ],
+    "code": "Math.log2_2 = function(x) {\n  return Math.log(x);\n};",
+    "examples": "console.log(Math.log2_2(8)); // ≈ 3\nconsole.log(Math.log2_2(1)); // 0"
+  }
+]
